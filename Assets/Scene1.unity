@@ -229,6 +229,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1118694851137404, guid: b2fdd2b3f0ef82a468adecdbd10be6cb,
         type: 2}
+    - target: {fileID: 1455311695186818, guid: 5e00f5abef535454fb854ae1677d0c7f, type: 2}
+      propertyPath: m_TagString
+      value: LevelController
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e00f5abef535454fb854ae1677d0c7f, type: 2}
   m_IsPrefabParent: 0
