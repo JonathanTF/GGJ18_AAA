@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 65431130996976008}
   - component: {fileID: 135264872908051790}
   - component: {fileID: 114955812400267054}
+  - component: {fileID: 136194810171936876}
   m_Layer: 0
   m_Name: Harry Mr
   m_TagString: Untagged
@@ -98,7 +99,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 34
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -255,7 +256,20 @@ SphereCollider:
   m_GameObject: {fileID: 1976839662918062}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.0050000004
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136194810171936876
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976839662918062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0050000004
+  m_Height: 0.02
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.005}

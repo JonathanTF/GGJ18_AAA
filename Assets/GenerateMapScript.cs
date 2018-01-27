@@ -115,6 +115,7 @@ public class GenerateMapScript : MonoBehaviour {
 
                         GameObject wall = generateCube((int)UnityEngine.Random.Range(0, 8), new Vector3(i, 0, j) * WALL_SIZE, Vector3.zero);
                         wall.transform.localScale = Vector3.one * WALL_SIZE * 10;
+                        wall.transform.Rotate(new Vector3((int)UnityEngine.Random.Range(0, 4) * 90, (int)UnityEngine.Random.Range(0, 4) * 90, (int)UnityEngine.Random.Range(0, 4) * 90));
                         wall.transform.parent = gameObject.transform;
                         break;
                     case (START_CHAR):
