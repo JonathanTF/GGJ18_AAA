@@ -54,3 +54,4 @@ MonoBehaviour:
   Wall: {fileID: 1524775622442966, guid: 72c92f36f576aa34091147180c0e1a44, type: 2}
   StartTile: {fileID: 1987592182341420, guid: 8c9ff60a28d3ca14c84786854c3e556d, type: 2}
   Finish: {fileID: 1991988714531388, guid: 57b86974b9858c9459e012f239171d20, type: 2}
+  Harry: {fileID: 1976839662918062, guid: 654033c327347b04fb6621e9b01593b5, type: 2}
