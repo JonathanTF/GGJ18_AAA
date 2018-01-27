@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 54207991405241750}
   - component: {fileID: 114077166533474882}
   - component: {fileID: 65431130996976008}
+  - component: {fileID: 136656175331886136}
+  - component: {fileID: 135264872908051790}
   m_Layer: 0
   m_Name: Harry Mr
   m_TagString: Untagged
@@ -168,7 +170,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &65431130996976008
 BoxCollider:
@@ -178,7 +180,7 @@ BoxCollider:
   m_GameObject: {fileID: 1976839662918062}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.010000001, z: 0.010000001}
   m_Center: {x: 0, y: 0, z: 0}
@@ -234,3 +236,28 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1849887950494664}
   m_Enabled: 1
+--- !u!135 &135264872908051790
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976839662918062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0050000004
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136656175331886136
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976839662918062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.0050000004
+  m_Height: 0.010000001
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
