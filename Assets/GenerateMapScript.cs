@@ -8,6 +8,7 @@ public class GenerateMapScript : MonoBehaviour {
     public GameObject Wall;
     public GameObject StartTile;
     public GameObject Finish;
+    public GameObject Harry;
 
     const char WALL_CHAR = 'W';
     const char START_CHAR = 'S';
@@ -49,7 +50,9 @@ public class GenerateMapScript : MonoBehaviour {
 
                 switch (tileChar){
                     case (WALL_CHAR):   Instantiate<GameObject>(Wall, new Vector3(i, 0, j), Quaternion.identity); break;
-                    case (START_CHAR):   Instantiate<GameObject>(StartTile, new Vector3(i, 0, j), Quaternion.AngleAxis(90, Vector3.right)); break;
+                    case (START_CHAR):
+                        Instantiate<GameObject>(StartTile, new Vector3(i, 0, j), Quaternion.AngleAxis(90, Vector3.right));
+                        Instantiate<GameObject>(Harry, new Vector3(i, 0, j), Quaternion.identity); break;
                     case (FIN_CHAR): Instantiate<GameObject>(Finish, new Vector3(i, 0, j), Quaternion.identity); break;
                     default: break;
                 }
