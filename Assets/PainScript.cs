@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class PainScript : MonoBehaviour {
 
-    const int ZAP_TOLERANCE = 180;
-    const int EMPTY_ZAP = 0;
+    const float ZAP_MAX = 2f;
+    const float ZAP_MIN = 1f;
 
-    int zapness;
+    float zapness;
 
     public void Zap()
     {
-        zapness += 30;
+        if (zapness < ZAP_MAX)
+        {
+            zapness += 0.15f;
+            zapness *= 1.2f;
+            Debug.Log("Ouch! zapness: " + zapness);
+        }
     }
 
 	// Use this for initialization
 	void Start () {
-        zapness = EMPTY_ZAP;
+        zapness = ZAP_MIN;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (zapness > EMPTY_ZAP)
+		if (zapness > ZAP_MIN)
         {
-            zapness--;
+            zapness -= 0.01f;
         }
-        else if (zapness > ZAP_TOLERANCE)
+        if (zapness > ZAP_MAX)
         {
             Debug.Log("Too much ZAP!!!");
         }
