@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4677228529657742}
   - component: {fileID: 108399294986325612}
-  - component: {fileID: 95252209942052416}
+  - component: {fileID: 95567807962694208}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -115,7 +115,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1991988714531388}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &95252209942052416
+--- !u!95 &95567807962694208
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -124,7 +124,7 @@ Animator:
   m_GameObject: {fileID: 1999478008374978}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6bbba43eef6da466e88a1193d2707ada, type: 2}
+  m_Controller: {fileID: 9100000, guid: caa72954d71fe4e5abe1f0b3a54c647a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
