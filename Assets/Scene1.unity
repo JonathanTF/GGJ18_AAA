@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -442,6 +442,18 @@ Prefab:
       propertyPath: m_Name
       value: LevelController
       objectReference: {fileID: 0}
+    - target: {fileID: 114908002607545684, guid: 9b7c73dbd43c8c942b9d5557cc163250,
+        type: 2}
+      propertyPath: StartGate
+      value: 
+      objectReference: {fileID: 1450215176822780, guid: d36238f8582a5482f89a9d679607ae3c,
+        type: 2}
+    - target: {fileID: 114908002607545684, guid: 9b7c73dbd43c8c942b9d5557cc163250,
+        type: 2}
+      propertyPath: Harry
+      value: 
+      objectReference: {fileID: 1156304421595882, guid: 3a025d7bc059f964484c4b6241f4db1d,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b7c73dbd43c8c942b9d5557cc163250, type: 2}
   m_IsPrefabParent: 0

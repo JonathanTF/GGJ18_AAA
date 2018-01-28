@@ -136,8 +136,8 @@ public class GenerateMapScript : MonoBehaviour {
 							blood = BloodFloor2;
 						else if (bloodint == 2)
 							blood = BloodFloor3; else blood = BloodFloor1;
-								GameObject floor = Instantiate<GameObject>(blood, new Vector3(i, -0.5f, j), Quaternion.AngleAxis(90, Vector3.right));
-								floor.transform.localScale = Vector3.one;
+								GameObject floor = Instantiate<GameObject>(blood, new Vector3(i, -0.5f, j) * WALL_SIZE, Quaternion.AngleAxis(90, Vector3.right));
+								floor.transform.localScale = Vector3.one * WALL_SIZE;
 								floor.transform.parent = gameObject.transform;
 								break;
 						}
