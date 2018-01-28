@@ -69,7 +69,7 @@ public class hamMovement : MonoBehaviour {
             animCtrl.speed = (-3 * fb_control) + 1;
         }
 
-        print(fb_control);
+
         
     }
 
@@ -177,9 +177,6 @@ public class hamMovement : MonoBehaviour {
             moveDirection = new Vector3(0, 0, fb_control);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
-
-            print(control.velocity.magnitude);
-
             
 
             control.Move(moveDirection * Time.deltaTime);

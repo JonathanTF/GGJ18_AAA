@@ -136,14 +136,14 @@ public class GenerateMapScript : MonoBehaviour {
 							blood = BloodFloor2;
 						else if (bloodint == 2)
 							blood = BloodFloor3; else blood = BloodFloor1;
-								GameObject floor = Instantiate<GameObject>(blood, new Vector3(i, -0.5f, j) * WALL_SIZE, Quaternion.AngleAxis(90, Vector3.right));
+								GameObject floor = Instantiate<GameObject>(blood, new Vector3(i, -0.4995f, j) * WALL_SIZE, Quaternion.AngleAxis(90, Vector3.right));
 								floor.transform.localScale = Vector3.one * WALL_SIZE;
 								floor.transform.parent = gameObject.transform;
 								break;
 						}
 						break;
                     case (START_CHAR):
-                        GameObject startWall = Instantiate<GameObject>(StartGate, new Vector3(i + 1, 1, j) * WALL_SIZE, Quaternion.identity);
+                        GameObject startWall = Instantiate<GameObject>(StartGate, new Vector3(i + 1, 0.75f, j) * WALL_SIZE, Quaternion.identity);
                         //GameObject startGate = Instantiate<GameObject>(StartGate, new Vector3(i - 1, 0, j) * WALL_SIZE, Quaternion.identity);
 
                         GameObject startGate = Instantiate<GameObject>(StartGate, new Vector3(i - 1, 0, j) * WALL_SIZE, Quaternion.Euler(new Vector3(0,1,1) * 90));
@@ -169,7 +169,6 @@ public class GenerateMapScript : MonoBehaviour {
                         finGate.transform.localScale = Vector3.one * WALL_SIZE * 10;
                         finGate.transform.parent = gameObject.transform;
                         GateScript fgs = finGate.GetComponent<GateScript>();
-                        fgs.SetDirection(-1);
                         GameObject finish = Instantiate<GameObject>(Finish, new Vector3(i, 0, j) * WALL_SIZE, Quaternion.identity);
                         finish.transform.parent = gameObject.transform;
                         break;

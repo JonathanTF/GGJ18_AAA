@@ -2,7 +2,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
- using UnityEditor;
+using UnityEditor;
 
 public class Touchable : Text
 {

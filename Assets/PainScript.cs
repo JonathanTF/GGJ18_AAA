@@ -15,28 +15,6 @@ public class PainScript : MonoBehaviour {
 
     GameObject bloodeyes;
 
-    public Transform camTransform;
-    public float shakeDuration = 0f;
-    public float shakeAmount = 0.7f;
-    public float decreaseFactor = 1.0f;
-
-    Vector3 originalPos;
-
-    void Awake()
-    {
-        if (camTransform == null)
-        {
-            camTransform = GameObject.FindWithTag("MainCamera").GetComponent<Transform>();
-        }
-    }
-
-    void OnEnable()
-    {
-        originalPos = camTransform.localPosition;
-    }
-
-        
-
     public void Zap()
     {
         if (zapness < ZAP_MAX)
@@ -44,8 +22,6 @@ public class PainScript : MonoBehaviour {
             zapness += 0.05f;
             zapness = Mathf.Pow(zapness, 2f);
             Debug.Log("Ouch! zapness: " + zapness);
-            shakeAmount = zapness - ZAP_MIN;
-            shakeDuration = zapness / 2; 
         }
     }
 
@@ -70,19 +46,9 @@ public class PainScript : MonoBehaviour {
         }
 		as_zap.pitch = zapness;
 
-        bloodeyes.GetComponent<Image>().sprite = images[(int)(20 * Mathf.Clamp01(zapness - ZAP_MIN))];
+        bloodeyes.GetComponent<Image>().sprite = images[(int)(19 * Mathf.Clamp01(zapness - ZAP_MIN))];
 
-        if (shakeDuration > 0)
-        {
-            camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
 
-            shakeDuration -= Time.deltaTime * decreaseFactor;
-        }
-        else
-        {
-            shakeDuration = 0f;
-            camTransform.localPosition = originalPos;
-        }
 
     }
 
