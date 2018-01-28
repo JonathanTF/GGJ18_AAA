@@ -39,6 +39,7 @@ public class GenerateMapScript : MonoBehaviour {
     const int WIDTH = 11;
     string[] lines;
 
+    const int LEVELS = 4;
     int level;
 
     private GameObject generateCube(int cubeType, Vector3 pos, Vector3 direction)
@@ -63,7 +64,7 @@ public class GenerateMapScript : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        level = 1;
+        level = 0;
         LoadMaze("Mazes/maze" + level);
     }
 
@@ -71,6 +72,7 @@ public class GenerateMapScript : MonoBehaviour {
     {
         // increment level, destroy level, load next level
         level++;
+        level %= LEVELS;
         foreach (Transform child in transform)
         {
             GameObject.Destroy(child.gameObject);
@@ -120,7 +122,9 @@ public class GenerateMapScript : MonoBehaviour {
                         break;
                     case (START_CHAR):
                         GameObject startWall = Instantiate<GameObject>(StartGate, new Vector3(i + 1, 1, j) * WALL_SIZE, Quaternion.identity);
-                        GameObject startGate = Instantiate<GameObject>(StartGate, new Vector3(i - 1, 0, j) * WALL_SIZE, Quaternion.identity);
+                        //GameObject startGate = Instantiate<GameObject>(StartGate, new Vector3(i - 1, 0, j) * WALL_SIZE, Quaternion.identity);
+
+                        GameObject startGate = Instantiate<GameObject>(StartGate, new Vector3(i - 1, 0, j) * WALL_SIZE, Quaternion.Euler(new Vector3(0,1,1) * 90));
 
                         
 
@@ -139,6 +143,11 @@ public class GenerateMapScript : MonoBehaviour {
                         harry.transform.parent = gameObject.transform;
                         break;
                     case (FIN_CHAR):
+                        GameObject finGate = Instantiate<GameObject>(StartGate, new Vector3(i - 1, 0, j) * WALL_SIZE, Quaternion.Euler(new Vector3(0, 1, 1) * 90));
+                        finGate.transform.localScale = Vector3.one * WALL_SIZE * 10;
+                        finGate.transform.parent = gameObject.transform;
+                        GateScript fgs = finGate.GetComponent<GateScript>();
+                        fgs.SetDirection(-1);
                         GameObject finish = Instantiate<GameObject>(Finish, new Vector3(i, 0, j) * WALL_SIZE, Quaternion.identity);
                         finish.transform.parent = gameObject.transform;
                         break;

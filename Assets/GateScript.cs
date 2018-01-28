@@ -6,7 +6,7 @@ public class GateScript : MonoBehaviour {
 
     private const float multiplier = 0.026f;
     private int count = 0;
-    private const int maxCount = 120;
+    private const int maxCount = 180;
     private float direction = 1f;
 
     private bool liftGate = false;
@@ -54,7 +54,7 @@ public class GateScript : MonoBehaviour {
             }
             else
             {
-                transform.position = transform.position + direction * Vector3.up * multiplier * Mathf.Sin(Mathf.Deg2Rad * count * 1.5f);
+                transform.position = transform.position + direction * Vector3.up * multiplier * Mathf.Sin(Mathf.Deg2Rad * count);
                 count++;
             }
         }
