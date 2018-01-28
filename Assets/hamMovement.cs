@@ -15,18 +15,21 @@ public class hamMovement : MonoBehaviour {
     private PainScript brainOfPain;
     private IEnumerator coroutine;
 
-	GameObject BGM;
+    GameObject BGM;
+    private float rotation;
 
     // Use this for initialization
     void Start()
     {
-        
+
         control = GetComponent<CharacterController>();
 
         coroutine = DoCheck();
         StartCoroutine(coroutine);
-		BGM = GameObject.FindWithTag ("GameController");
-		brainOfPain = BGM.GetComponent<PainScript>();
+        BGM = GameObject.FindWithTag("GameController");
+        brainOfPain = BGM.GetComponent<PainScript>();
+
+        rotation = transform.rotation.eulerAngles.y;
     }
 
 
@@ -40,16 +43,16 @@ public class hamMovement : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update() {
+
+    }
 
     private void clamp_fb()
     {
-        if(fb_control < -1)
+        if (fb_control < -1)
         {
             fb_control = -1;
-        }else if(fb_control > 1)
+        } else if (fb_control > 1)
         {
             fb_control = 1;
         }
@@ -76,29 +79,66 @@ public class hamMovement : MonoBehaviour {
 
 
     public float speed = 10.0f;
-    private float rotation = 0.0f;
+
     private Quaternion qTo = Quaternion.Euler(Vector3.down * 90f);
 
-
+    bool rightTapCD = false;
     public void tapRight()
     {
 
         hamTime = 0;
-        rotation += 30.0f;
+
+        if (rightTapCD)
+        {
+            rotation += 0.0f;
+        }
+        else
+        {
+            rotation += 30.0f;
+            rightTapCD = true;
+            StartCoroutine(RightRotateTimer());
+        }
+
         qTo = Quaternion.Euler(0.0f, rotation, 0.0f);
         brainOfPain.Zap();
 
     }
 
+    IEnumerator RightRotateTimer()
+    {
+        yield return new WaitForSeconds(.35f);
+        rightTapCD = false;
+    }
+
+    bool leftTapCD = false;
     public void tapLeft()
     {
 
         hamTime = 0;
-        rotation -= 30.0f;
+
+        if (leftTapCD)
+        {
+            rotation -= 0.0f;
+        }
+        else
+        {
+            rotation -= 30.0f;
+            leftTapCD = true;
+            StartCoroutine(LeftRotateTimer());
+        }
+
+        
+
         qTo = Quaternion.Euler(0.0f, rotation, 0.0f);
 
         brainOfPain.Zap();
 
+    }
+
+    IEnumerator LeftRotateTimer()
+    {
+        yield return new WaitForSeconds(.35f);
+        leftTapCD = false;
     }
 
     Vector3 moveDirection;
