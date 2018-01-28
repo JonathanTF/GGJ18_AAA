@@ -263,6 +263,12 @@ Prefab:
       propertyPath: m_Name
       value: LevelController
       objectReference: {fileID: 0}
+    - target: {fileID: 114908002607545684, guid: 9b7c73dbd43c8c942b9d5557cc163250,
+        type: 2}
+      propertyPath: Harry
+      value: 
+      objectReference: {fileID: 1393430049005206, guid: a1a833acf0576324790807ca87cd94bd,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b7c73dbd43c8c942b9d5557cc163250, type: 2}
   m_IsPrefabParent: 0
