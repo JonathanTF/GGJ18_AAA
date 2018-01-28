@@ -120,7 +120,7 @@ public class GenerateMapScript : MonoBehaviour {
                     case (START_CHAR):
                         GameObject start = Instantiate<GameObject>(StartTile, new Vector3(i, -0.5f, j) * WALL_SIZE, Quaternion.AngleAxis(90, Vector3.right));
                         GameObject harry = Instantiate<GameObject>(Harry, new Vector3(i, 0, j) * WALL_SIZE, Quaternion.identity);
-                        harry.transform.Rotate(Vector3.down * 90);
+                        //harry.transform.Rotate(Vector3.down * 90);
                         start.transform.parent = gameObject.transform;
                         harry.transform.parent = gameObject.transform;
                         break;

@@ -5,19 +5,23 @@ using UnityEngine;
 public class hamMovement : MonoBehaviour {
 
     public bool move = true;
-    public float velocity = 10;
-    public float turnVelocity = 10;
+    public float velocity = 2;
+    public float turnVelocity = 8;
     public float fb_control = 0;
-    public float secTillHamSlow = 4;
+    public float secTillHamSlow = 2;
     public float secTillHamCtrl = 10;
     private float hamTime = 0;
     private CharacterController control;
+    private IEnumerator coroutine;
 
     // Use this for initialization
     void Start()
     {
 
         control = GetComponent<CharacterController>();
+
+        coroutine = DoCheck();
+        StartCoroutine(coroutine);
     }
 
 
@@ -48,6 +52,7 @@ public class hamMovement : MonoBehaviour {
 
     public void tapForward()
     {
+        print("tapped forward");
         fb_control += 0.1f;
         clamp_fb();
         hamTime = 0;
@@ -96,6 +101,7 @@ public class hamMovement : MonoBehaviour {
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
 
+
             control.Move(moveDirection * Time.deltaTime);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo, speed * Time.deltaTime);
@@ -106,12 +112,16 @@ public class hamMovement : MonoBehaviour {
     private void hamTimer()
     {
         hamTime++;
-        if((hamTime/10) >= secTillHamCtrl)
+        if((hamTime/10 >= secTillHamSlow))
         {
-            //hamster does random action?   
-        }else if((hamTime/10 >= secTillHamSlow))
-        {
-            velocity = 0;
+ 
+            if (fb_control < 0)
+            {
+                fb_control += .1f;
+            }else if(fb_control > 0)
+            {
+                fb_control -= .1f;
+            }
         }
     }
 
