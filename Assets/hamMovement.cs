@@ -175,15 +175,7 @@ public class hamMovement : MonoBehaviour {
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
 
-            //This should update the crawling speed on the animation
-            /*if(Mathf.Abs(speed) < 1)
-            {
-                GetComponent<Animator>().SetFloat("moving", 0);
-            }
-            else
-            {
-                GetComponent<Animator>().SetFloat("moving", speed);
-            }*/
+            print(control.velocity.magnitude);
 
             
 
@@ -214,6 +206,11 @@ public class hamMovement : MonoBehaviour {
                 {
                     fb_control = 0;
                 }
+            }
+
+            if (control.velocity.magnitude.Equals(0))
+            {
+                fb_control = 0;
             }
         }
     }
