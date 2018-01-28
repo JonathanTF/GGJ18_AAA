@@ -12,16 +12,21 @@ public class hamMovement : MonoBehaviour {
     public float secTillHamCtrl = 10;
     private float hamTime = 0;
     private CharacterController control;
+    private PainScript brainOfPain;
     private IEnumerator coroutine;
+
+	GameObject BGM;
 
     // Use this for initialization
     void Start()
     {
-
+        
         control = GetComponent<CharacterController>();
 
         coroutine = DoCheck();
         StartCoroutine(coroutine);
+		BGM = GameObject.FindWithTag ("GameController");
+		brainOfPain = BGM.GetComponent<PainScript>();
     }
 
 
@@ -56,6 +61,8 @@ public class hamMovement : MonoBehaviour {
         fb_control += 0.1f;
         clamp_fb();
         hamTime = 0;
+
+        brainOfPain.Zap();
     }
 
     public void tapBackward()
@@ -63,6 +70,8 @@ public class hamMovement : MonoBehaviour {
         fb_control -= 0.1f;
         clamp_fb();
         hamTime = 0;
+        brainOfPain.Zap();
+
     }
 
 
@@ -77,6 +86,7 @@ public class hamMovement : MonoBehaviour {
         hamTime = 0;
         rotation += 30.0f;
         qTo = Quaternion.Euler(0.0f, rotation, 0.0f);
+        brainOfPain.Zap();
 
     }
 
@@ -87,6 +97,7 @@ public class hamMovement : MonoBehaviour {
         rotation -= 30.0f;
         qTo = Quaternion.Euler(0.0f, rotation, 0.0f);
 
+        brainOfPain.Zap();
 
     }
 

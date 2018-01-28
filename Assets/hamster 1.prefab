@@ -79,7 +79,6 @@ GameObject:
   - component: {fileID: 143947512007103990}
   - component: {fileID: 114312999850498264}
   - component: {fileID: 135005737086955356}
-  - component: {fileID: 114025755589604200}
   m_Layer: 0
   m_Name: hamster 1
   m_TagString: Untagged
@@ -461,17 +460,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114025755589604200
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1393430049005206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f68bb25f8a8192498e501dc0f781105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114047494517321760
 MonoBehaviour:
   m_ObjectHideFlags: 1
