@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-guid: 992c1983c48fce149be8eaaf11e1f431
-labels:
-- free
-- plugin
-- particles
-- FX
-- PopcornFX
+guid: 4a6af744cace2b445b39c49b6503bde8
 folderAsset: yes
+timeCreated: 1517168623
+licenseType: Free
 DefaultImporter:
   externalObjects: {}
   userData: 
