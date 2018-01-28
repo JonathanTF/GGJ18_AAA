@@ -54,8 +54,14 @@ MonoBehaviour:
   Wall: {fileID: 1524775622442966, guid: 72c92f36f576aa34091147180c0e1a44, type: 2}
   StartTile: {fileID: 1987592182341420, guid: 8c9ff60a28d3ca14c84786854c3e556d, type: 2}
   Finish: {fileID: 1991988714531388, guid: 57b86974b9858c9459e012f239171d20, type: 2}
-  Harry: {fileID: 1976839662918062, guid: 654033c327347b04fb6621e9b01593b5, type: 2}
+  Harry: {fileID: 1393430049005206, guid: a1a833acf0576324790807ca87cd94bd, type: 2}
   Ground: {fileID: 1118694851137404, guid: b2fdd2b3f0ef82a468adecdbd10be6cb, type: 2}
+  BloodFloor1: {fileID: 1133965561714978, guid: 4fd1bc74218864e9989750d3dfb01380,
+    type: 2}
+  BloodFloor2: {fileID: 1470918636004806, guid: 11c8268b7bea043cfad093c40e3afd23,
+    type: 2}
+  BloodFloor3: {fileID: 1275251436925490, guid: 518eb0919c1a14736a573bbed3623c82,
+    type: 2}
   ABJMOQ: {fileID: 1591488516412858, guid: 4ef8124ab62d9430c8316cd8fe512192, type: 2}
   ACDEMP: {fileID: 1591488516412858, guid: b046ca402fca744379aa635061f7fa95, type: 2}
   ADENVZ: {fileID: 1591488516412858, guid: 99eb8f5c4a0a94d5eb4adf6a413773e0, type: 2}
@@ -64,3 +70,4 @@ MonoBehaviour:
   EGKLUV: {fileID: 1591488516412858, guid: 497284c9001914d9b94388616b7de4c3, type: 2}
   EHINPS: {fileID: 1591488516412858, guid: 5938abf69147e4be6b863be3d14ee096, type: 2}
   GILRUW: {fileID: 1591488516412858, guid: 613c836ba94c84daf97c7c2d4e21eda3, type: 2}
+  GateCube: {fileID: 0}
