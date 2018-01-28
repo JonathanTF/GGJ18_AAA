@@ -297,7 +297,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3a58a7f27a7a34f21b84fbe4ac34ee07, type: 2}
+      objectReference: {fileID: 2100000, guid: a82b11a56cbd04c219d58585dac57cc5, type: 2}
     - target: {fileID: 4518014711684850, guid: 53d837877712c453c858b20a63248d0a, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -442,12 +442,6 @@ Prefab:
       propertyPath: m_Name
       value: LevelController
       objectReference: {fileID: 0}
-    - target: {fileID: 114908002607545684, guid: 9b7c73dbd43c8c942b9d5557cc163250,
-        type: 2}
-      propertyPath: Harry
-      value: 
-      objectReference: {fileID: 1393430049005206, guid: a1a833acf0576324790807ca87cd94bd,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b7c73dbd43c8c942b9d5557cc163250, type: 2}
   m_IsPrefabParent: 0

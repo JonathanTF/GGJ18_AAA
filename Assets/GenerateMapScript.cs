@@ -10,6 +10,9 @@ public class GenerateMapScript : MonoBehaviour {
     public GameObject Finish;
     public GameObject Harry;
     public GameObject Ground;
+	public GameObject BloodFloor1;
+	public GameObject BloodFloor2;
+	public GameObject BloodFloor3;
 
     public GameObject ABJMOQ;
     public GameObject ACDEMP;
@@ -32,7 +35,8 @@ public class GenerateMapScript : MonoBehaviour {
 
     const char WALL_CHAR = '#';
     const char START_CHAR = 'S';
-    const char FIN_CHAR = 'F';
+	const char FIN_CHAR = 'F';
+	const char FLOOR_CHAR = '.';
 
     const float WALL_SIZE = 2f;
     const int LENGTH = 11;
@@ -40,6 +44,7 @@ public class GenerateMapScript : MonoBehaviour {
     string[] lines;
 
     int level;
+	float randomfloat = 0.0f;
 
     private GameObject generateCube(int cubeType, Vector3 pos, Vector3 direction)
     {
@@ -118,6 +123,23 @@ public class GenerateMapScript : MonoBehaviour {
                         wall.transform.localScale = Vector3.one * WALL_SIZE * 10;
                         wall.transform.parent = gameObject.transform;
                         break;
+					case (FLOOR_CHAR):
+						randomfloat = UnityEngine.Random.Range(0.0f, 10.0f);
+						if (randomfloat > 7.0f){
+						int bloodint = ((int)randomfloat ) % 3;
+						GameObject blood;
+						if (bloodint == 0)
+							blood = BloodFloor1;
+						else if (bloodint == 1)
+							blood = BloodFloor2;
+						else if (bloodint == 2)
+							blood = BloodFloor3; else blood = BloodFloor1;
+								GameObject floor = Instantiate<GameObject>(blood, new Vector3(i, -0.5f, j), Quaternion.AngleAxis(90, Vector3.right));
+								floor.transform.localScale = Vector3.one;
+								floor.transform.parent = gameObject.transform;
+								break;
+						}
+						break;
                     case (START_CHAR):
                         GameObject start = Instantiate<GameObject>(StartTile, new Vector3(i, -0.5f, j) * WALL_SIZE, Quaternion.AngleAxis(90, Vector3.right));
                         GameObject harry = Instantiate<GameObject>(Harry, new Vector3(i, 0, j) * WALL_SIZE, Quaternion.identity);
