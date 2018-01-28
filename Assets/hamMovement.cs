@@ -90,7 +90,7 @@ public class hamMovement : MonoBehaviour {
 
         if (rightTapCD)
         {
-            rotation += 3.0f;
+            rotation += 0.0f;
         }
         else
         {
@@ -106,7 +106,7 @@ public class hamMovement : MonoBehaviour {
 
     IEnumerator RightRotateTimer()
     {
-        yield return new WaitForSeconds(.55f);
+        yield return new WaitForSeconds(.35f);
         rightTapCD = false;
     }
 
@@ -118,7 +118,7 @@ public class hamMovement : MonoBehaviour {
 
         if (leftTapCD)
         {
-            rotation -= 3.0f;
+            rotation -= 0.0f;
         }
         else
         {
@@ -137,7 +137,7 @@ public class hamMovement : MonoBehaviour {
 
     IEnumerator LeftRotateTimer()
     {
-        yield return new WaitForSeconds(.55f);
+        yield return new WaitForSeconds(.35f);
         leftTapCD = false;
     }
 
