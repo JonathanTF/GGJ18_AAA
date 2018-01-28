@@ -20,7 +20,7 @@ public class hamMovement : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        
+       
         control = GetComponent<CharacterController>();
 
         coroutine = DoCheck();
@@ -107,10 +107,14 @@ public class hamMovement : MonoBehaviour {
     {
         if (move)
         {
-
+            
             moveDirection = new Vector3(0, 0, fb_control);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
+
+            //This should update the crawling speed on the animation
+            GetComponent<Animator>().SetFloat("moving", speed);
+            GetComponent<Animator>().speed = speed/50;
 
 
             control.Move(moveDirection * Time.deltaTime);
