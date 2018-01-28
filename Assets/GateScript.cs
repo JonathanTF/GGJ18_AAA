@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GateScript : MonoBehaviour {
 
-    private const float multiplier = 0.026f;
+    private const float multiplier = 0.018f;
     private int count = 0;
     private const int maxCount = 180;
     private float direction = 1f;
+    AudioSource auds;
 
     private bool liftGate = false;
     private bool dropGate = false;
@@ -25,13 +26,15 @@ public class GateScript : MonoBehaviour {
         {
             liftGate = true;
             dropGate = false;
+            GetComponent<AudioSource>().Play();
         }
     }
         
 
 	// Use this for initialization
 	void Start () {
-        
+        auds = GetComponent<AudioSource>();
+        Debug.Log(GetComponent<AudioSource>());
 	}
 
     void OnTriggerEnter(Collider col)
