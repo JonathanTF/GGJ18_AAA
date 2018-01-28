@@ -6,7 +6,7 @@ public class PainScript : MonoBehaviour {
 
     const float ZAP_MAX = 2f;
     const float ZAP_MIN = 1f;
-
+	AudioSource as_zap;
     float zapness;
 
     public void Zap()
@@ -22,6 +22,8 @@ public class PainScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         zapness = ZAP_MIN;
+		as_zap = GetComponent<AudioSource> ();
+		as_zap.Play();
 	}
 	
 	// Update is called once per frame
@@ -34,5 +36,6 @@ public class PainScript : MonoBehaviour {
         {
             Debug.Log("Too much ZAP!!!");
         }
+		as_zap.pitch = zapness;
 	}
 }

@@ -15,14 +15,18 @@ public class hamMovement : MonoBehaviour {
     private PainScript brainOfPain;
     private IEnumerator coroutine;
 
+	GameObject BGM;
+
     // Use this for initialization
     void Start()
     {
-        brainOfPain = GetComponent<PainScript>();
+        
         control = GetComponent<CharacterController>();
 
         coroutine = DoCheck();
         StartCoroutine(coroutine);
+		BGM = GameObject.FindWithTag ("GameController");
+		brainOfPain = BGM.GetComponent<PainScript>();
     }
 
 
