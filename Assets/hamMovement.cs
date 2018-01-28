@@ -14,6 +14,9 @@ public class hamMovement : MonoBehaviour {
     private CharacterController control;
     private PainScript brainOfPain;
     private IEnumerator coroutine;
+    public GameObject harry;
+    private Animator animCtrl;
+    public bool isMoving = false;
 
     GameObject BGM;
     private float rotation;
@@ -23,6 +26,7 @@ public class hamMovement : MonoBehaviour {
     {
 
         control = GetComponent<CharacterController>();
+        control.enabled = true;
 
         coroutine = DoCheck();
         StartCoroutine(coroutine);
@@ -30,6 +34,8 @@ public class hamMovement : MonoBehaviour {
         brainOfPain = BGM.GetComponent<PainScript>();
 
         rotation = transform.rotation.eulerAngles.y;
+
+        animCtrl = harry.GetComponent<Animator>();
     }
 
 
@@ -44,7 +50,24 @@ public class hamMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (fb_control == 0)
+        {
+            animCtrl.SetBool("isMoving", false);
+            animCtrl.speed = 1;
+        }
+        else if(fb_control > 0)
+        {
+            animCtrl.SetBool("isMoving", true);
+            animCtrl.speed = 3 * fb_control;
+        }
+        else
+        {
+            animCtrl.SetBool("isMoving", true);
+            animCtrl.speed = -3 * fb_control;
+        }
 
+        print(fb_control);
+        
     }
 
     private void clamp_fb()
@@ -153,9 +176,16 @@ public class hamMovement : MonoBehaviour {
             moveDirection *= speed;
 
             //This should update the crawling speed on the animation
-            GetComponent<Animator>().SetFloat("moving", speed);
-            GetComponent<Animator>().speed = speed/50;
+            /*if(Mathf.Abs(speed) < 1)
+            {
+                GetComponent<Animator>().SetFloat("moving", 0);
+            }
+            else
+            {
+                GetComponent<Animator>().SetFloat("moving", speed);
+            }*/
 
+            
 
             control.Move(moveDirection * Time.deltaTime);
 
