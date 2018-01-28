@@ -38,14 +38,17 @@ public class opaqTouch : MonoBehaviour {
             image.color = new Color(1, 1, 1, i);
             yield return null;
         }
+        //image.sprite.
 
     }
 
     IEnumerator rapidClicker()
     {
+
         for (float i = 0; i <= 1; i += Time.deltaTime * speed)
         {
             image.color = new Color(1, 1, 1, 1);
+
             yield return null;
         }
     }

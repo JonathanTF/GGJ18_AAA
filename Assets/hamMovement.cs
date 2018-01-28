@@ -52,18 +52,21 @@ public class hamMovement : MonoBehaviour {
     void Update() {
         if (fb_control == 0)
         {
+            animCtrl.SetFloat("moving", 0);
             animCtrl.SetBool("isMoving", false);
             animCtrl.speed = 1;
         }
         else if(fb_control > 0)
         {
             animCtrl.SetBool("isMoving", true);
-            animCtrl.speed = 3 * fb_control;
+            animCtrl.SetFloat("moving", 1);
+            animCtrl.speed = (3 * fb_control) + 1;
         }
         else
         {
             animCtrl.SetBool("isMoving", true);
-            animCtrl.speed = -3 * fb_control;
+            animCtrl.SetFloat("moving", -1);
+            animCtrl.speed = (-3 * fb_control) + 1;
         }
 
         print(fb_control);
@@ -175,15 +178,7 @@ public class hamMovement : MonoBehaviour {
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
 
-            //This should update the crawling speed on the animation
-            /*if(Mathf.Abs(speed) < 1)
-            {
-                GetComponent<Animator>().SetFloat("moving", 0);
-            }
-            else
-            {
-                GetComponent<Animator>().SetFloat("moving", speed);
-            }*/
+            print(control.velocity.magnitude);
 
             
 
@@ -214,6 +209,11 @@ public class hamMovement : MonoBehaviour {
                 {
                     fb_control = 0;
                 }
+            }
+
+            if (control.velocity.magnitude.Equals(0))
+            {
+                fb_control = 0;
             }
         }
     }
