@@ -13,8 +13,8 @@ public class PainScript : MonoBehaviour {
     {
         if (zapness < ZAP_MAX)
         {
-            zapness += 0.15f;
-            zapness *= 1.2f;
+            zapness += 0.05f;
+            zapness = Mathf.Pow(zapness, 2f);
             Debug.Log("Ouch! zapness: " + zapness);
         }
     }

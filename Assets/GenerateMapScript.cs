@@ -6,7 +6,7 @@ using UnityEngine;
 public class GenerateMapScript : MonoBehaviour {
 
     public GameObject Wall;
-    public GameObject StartTile;
+    public GameObject StartGate;
     public GameObject Finish;
     public GameObject Harry;
     public GameObject Ground;
@@ -119,10 +119,23 @@ public class GenerateMapScript : MonoBehaviour {
                         wall.transform.parent = gameObject.transform;
                         break;
                     case (START_CHAR):
-                        GameObject start = Instantiate<GameObject>(StartTile, new Vector3(i, -0.5f, j) * WALL_SIZE, Quaternion.AngleAxis(90, Vector3.right));
+                        GameObject startWall = Instantiate<GameObject>(StartGate, new Vector3(i + 1, 1, j) * WALL_SIZE, Quaternion.identity);
+                        GameObject startGate = Instantiate<GameObject>(StartGate, new Vector3(i - 1, 0, j) * WALL_SIZE, Quaternion.identity);
+
+                        
+
+                        startWall.transform.localScale = Vector3.one * WALL_SIZE * 10;
+                        startGate.transform.localScale = Vector3.one * WALL_SIZE * 10;
+
+                        startWall.transform.parent = gameObject.transform;
+                        startGate.transform.parent = gameObject.transform;
+
+                        GateScript gs = startWall.GetComponent<GateScript>();
+                        gs.SetDirection(-1);
+
+                        //spawning player
                         GameObject harry = Instantiate<GameObject>(Harry, new Vector3(i, 0, j) * WALL_SIZE, Quaternion.identity);
                         harry.transform.Rotate(Vector3.down * 90);
-                        start.transform.parent = gameObject.transform;
                         harry.transform.parent = gameObject.transform;
                         break;
                     case (FIN_CHAR):
