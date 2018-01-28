@@ -6,7 +6,7 @@ using UnityEngine;
 public class GenerateMapScript : MonoBehaviour {
 
     public GameObject Wall;
-    public GameObject StartTile;
+    public GameObject StartGate;
     public GameObject Finish;
     public GameObject Harry;
     public GameObject Ground;
@@ -43,6 +43,7 @@ public class GenerateMapScript : MonoBehaviour {
     const int WIDTH = 11;
     string[] lines;
 
+    const int LEVELS = 4;
     int level;
 	float randomfloat = 0.0f;
 
@@ -68,7 +69,7 @@ public class GenerateMapScript : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        level = 1;
+        level = 0;
         LoadMaze("Mazes/maze" + level);
     }
 
@@ -76,6 +77,7 @@ public class GenerateMapScript : MonoBehaviour {
     {
         // increment level, destroy level, load next level
         level++;
+        level %= LEVELS;
         foreach (Transform child in transform)
         {
             GameObject.Destroy(child.gameObject);
@@ -141,13 +143,33 @@ public class GenerateMapScript : MonoBehaviour {
 						}
 						break;
                     case (START_CHAR):
-                        GameObject start = Instantiate<GameObject>(StartTile, new Vector3(i, -0.5f, j) * WALL_SIZE, Quaternion.AngleAxis(90, Vector3.right));
+                        GameObject startWall = Instantiate<GameObject>(StartGate, new Vector3(i + 1, 1, j) * WALL_SIZE, Quaternion.identity);
+                        //GameObject startGate = Instantiate<GameObject>(StartGate, new Vector3(i - 1, 0, j) * WALL_SIZE, Quaternion.identity);
+
+                        GameObject startGate = Instantiate<GameObject>(StartGate, new Vector3(i - 1, 0, j) * WALL_SIZE, Quaternion.Euler(new Vector3(0,1,1) * 90));
+
+                        
+
+                        startWall.transform.localScale = Vector3.one * WALL_SIZE * 10;
+                        startGate.transform.localScale = Vector3.one * WALL_SIZE * 10;
+
+                        startWall.transform.parent = gameObject.transform;
+                        startGate.transform.parent = gameObject.transform;
+
+                        GateScript gs = startWall.GetComponent<GateScript>();
+                        gs.SetDirection(-1);
+
+                        //spawning player
                         GameObject harry = Instantiate<GameObject>(Harry, new Vector3(i, 0, j) * WALL_SIZE, Quaternion.identity);
                         harry.transform.Rotate(Vector3.down * 90);
-                        start.transform.parent = gameObject.transform;
                         harry.transform.parent = gameObject.transform;
                         break;
                     case (FIN_CHAR):
+                        GameObject finGate = Instantiate<GameObject>(StartGate, new Vector3(i - 1, 0, j) * WALL_SIZE, Quaternion.Euler(new Vector3(0, 1, 1) * 90));
+                        finGate.transform.localScale = Vector3.one * WALL_SIZE * 10;
+                        finGate.transform.parent = gameObject.transform;
+                        GateScript fgs = finGate.GetComponent<GateScript>();
+                        fgs.SetDirection(-1);
                         GameObject finish = Instantiate<GameObject>(Finish, new Vector3(i, 0, j) * WALL_SIZE, Quaternion.identity);
                         finish.transform.parent = gameObject.transform;
                         break;

@@ -14,19 +14,28 @@ public class hamMovement : MonoBehaviour {
     private CharacterController control;
     private PainScript brainOfPain;
     private IEnumerator coroutine;
+    public GameObject harry;
+    private Animator animCtrl;
+    public bool isMoving = false;
 
-	GameObject BGM;
+    GameObject BGM;
+    private float rotation;
 
     // Use this for initialization
     void Start()
     {
-        
+
         control = GetComponent<CharacterController>();
+        control.enabled = true;
 
         coroutine = DoCheck();
         StartCoroutine(coroutine);
-		BGM = GameObject.FindWithTag ("GameController");
-		brainOfPain = BGM.GetComponent<PainScript>();
+        BGM = GameObject.FindWithTag("GameController");
+        brainOfPain = BGM.GetComponent<PainScript>();
+
+        rotation = transform.rotation.eulerAngles.y;
+
+        animCtrl = harry.GetComponent<Animator>();
     }
 
 
@@ -40,16 +49,33 @@ public class hamMovement : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update() {
+        if (fb_control == 0)
+        {
+            animCtrl.SetBool("isMoving", false);
+            animCtrl.speed = 1;
+        }
+        else if(fb_control > 0)
+        {
+            animCtrl.SetBool("isMoving", true);
+            animCtrl.speed = 3 * fb_control;
+        }
+        else
+        {
+            animCtrl.SetBool("isMoving", true);
+            animCtrl.speed = -3 * fb_control;
+        }
+
+        print(fb_control);
+        
+    }
 
     private void clamp_fb()
     {
-        if(fb_control < -1)
+        if (fb_control < -1)
         {
             fb_control = -1;
-        }else if(fb_control > 1)
+        } else if (fb_control > 1)
         {
             fb_control = 1;
         }
@@ -76,29 +102,66 @@ public class hamMovement : MonoBehaviour {
 
 
     public float speed = 10.0f;
-    private float rotation = 0.0f;
+
     private Quaternion qTo = Quaternion.Euler(Vector3.down * 90f);
 
-
+    bool rightTapCD = false;
     public void tapRight()
     {
 
         hamTime = 0;
-        rotation += 30.0f;
+
+        if (rightTapCD)
+        {
+            rotation += 0.0f;
+        }
+        else
+        {
+            rotation += 30.0f;
+            rightTapCD = true;
+            StartCoroutine(RightRotateTimer());
+        }
+
         qTo = Quaternion.Euler(0.0f, rotation, 0.0f);
         brainOfPain.Zap();
 
     }
 
+    IEnumerator RightRotateTimer()
+    {
+        yield return new WaitForSeconds(.35f);
+        rightTapCD = false;
+    }
+
+    bool leftTapCD = false;
     public void tapLeft()
     {
 
         hamTime = 0;
-        rotation -= 30.0f;
+
+        if (leftTapCD)
+        {
+            rotation -= 0.0f;
+        }
+        else
+        {
+            rotation -= 30.0f;
+            leftTapCD = true;
+            StartCoroutine(LeftRotateTimer());
+        }
+
+        
+
         qTo = Quaternion.Euler(0.0f, rotation, 0.0f);
 
         brainOfPain.Zap();
 
+    }
+
+    IEnumerator LeftRotateTimer()
+    {
+        yield return new WaitForSeconds(.35f);
+        leftTapCD = false;
     }
 
     Vector3 moveDirection;
@@ -107,11 +170,22 @@ public class hamMovement : MonoBehaviour {
     {
         if (move)
         {
-
+            
             moveDirection = new Vector3(0, 0, fb_control);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
 
+            //This should update the crawling speed on the animation
+            /*if(Mathf.Abs(speed) < 1)
+            {
+                GetComponent<Animator>().SetFloat("moving", 0);
+            }
+            else
+            {
+                GetComponent<Animator>().SetFloat("moving", speed);
+            }*/
+
+            
 
             control.Move(moveDirection * Time.deltaTime);
 
