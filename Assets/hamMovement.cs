@@ -18,6 +18,7 @@ public class hamMovement : MonoBehaviour {
     private Animator animCtrl;
     public bool isMoving = false;
 
+	AudioSource zaps;
     GameObject BGM;
     private float rotation;
 
@@ -50,6 +51,7 @@ public class hamMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+		zaps = GetComponent<AudioSource> ();
         if (fb_control == 0)
         {
             animCtrl.SetFloat("moving", 0);
@@ -92,6 +94,7 @@ public class hamMovement : MonoBehaviour {
         hamTime = 0;
 
         brainOfPain.Zap();
+		GetComponent<AudioSource>().Play();
     }
 
     public void tapBackward()
@@ -100,6 +103,7 @@ public class hamMovement : MonoBehaviour {
         clamp_fb();
         hamTime = 0;
         brainOfPain.Zap();
+		GetComponent<AudioSource>().Play();
 
     }
 
@@ -127,7 +131,7 @@ public class hamMovement : MonoBehaviour {
 
         qTo = Quaternion.Euler(0.0f, rotation, 0.0f);
         brainOfPain.Zap();
-
+		GetComponent<AudioSource>().Play();
     }
 
     IEnumerator RightRotateTimer()
@@ -158,7 +162,7 @@ public class hamMovement : MonoBehaviour {
         qTo = Quaternion.Euler(0.0f, rotation, 0.0f);
 
         brainOfPain.Zap();
-
+		GetComponent<AudioSource>().Play();
     }
 
     IEnumerator LeftRotateTimer()
