@@ -38,6 +38,7 @@ public class opaqTouch : MonoBehaviour {
             image.color = new Color(1, 1, 1, i);
             yield return null;
         }
+        //image.sprite.
 
     }
 
