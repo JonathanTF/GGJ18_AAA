@@ -18,7 +18,8 @@ public class GenerateMapScript : MonoBehaviour {
     public GameObject EGINTV;
     public GameObject EGKLUV;
     public GameObject EHINPS;
-    public GameObject GILRUW;
+	public GameObject GILRUW;
+	public GameObject GateCube;
 
     const int ABJ = 0;
     const int ACD = 1;
