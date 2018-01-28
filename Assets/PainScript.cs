@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PainScript : MonoBehaviour {
 
-    const float ZAP_MAX = 2f;
+    const float ZAP_MAX = 1.5f;
     const float ZAP_MIN = 1f;
 
     public Sprite[] images; 
