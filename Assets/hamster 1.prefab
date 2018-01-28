@@ -508,7 +508,7 @@ MonoBehaviour:
   velocity: 10
   turnVelocity: 10
   fb_control: 0
-  secTillHamSlow: 4
+  secTillHamSlow: 0.5
   secTillHamCtrl: 10
   speed: 55
 --- !u!114 &114339663607536006
