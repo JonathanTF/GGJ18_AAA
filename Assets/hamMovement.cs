@@ -8,16 +8,17 @@ public class hamMovement : MonoBehaviour {
     public float velocity = 2;
     public float turnVelocity = 8;
     public float fb_control = 0;
-    public float secTillHamSlow = 2;
+    public float secTillHamSlow = 0.0f;
     public float secTillHamCtrl = 10;
     private float hamTime = 0;
     private CharacterController control;
+    private PainScript brainOfPain;
     private IEnumerator coroutine;
 
     // Use this for initialization
     void Start()
     {
-
+        brainOfPain = GetComponent<PainScript>();
         control = GetComponent<CharacterController>();
 
         coroutine = DoCheck();
@@ -56,6 +57,8 @@ public class hamMovement : MonoBehaviour {
         fb_control += 0.1f;
         clamp_fb();
         hamTime = 0;
+
+        brainOfPain.Zap();
     }
 
     public void tapBackward()
@@ -63,20 +66,23 @@ public class hamMovement : MonoBehaviour {
         fb_control -= 0.1f;
         clamp_fb();
         hamTime = 0;
+        brainOfPain.Zap();
+
     }
 
 
     public float speed = 10.0f;
     private float rotation = 0.0f;
-    private Quaternion qTo = Quaternion.identity;
+    private Quaternion qTo = Quaternion.Euler(Vector3.down * 90f);
 
 
     public void tapRight()
     {
 
         hamTime = 0;
-        rotation += 15.0f;
+        rotation += 30.0f;
         qTo = Quaternion.Euler(0.0f, rotation, 0.0f);
+        brainOfPain.Zap();
 
     }
 
@@ -84,9 +90,10 @@ public class hamMovement : MonoBehaviour {
     {
 
         hamTime = 0;
-        rotation -= 15.0f;
+        rotation -= 30.0f;
         qTo = Quaternion.Euler(0.0f, rotation, 0.0f);
 
+        brainOfPain.Zap();
 
     }
 
@@ -104,7 +111,7 @@ public class hamMovement : MonoBehaviour {
 
             control.Move(moveDirection * Time.deltaTime);
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo, speed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo, speed * 2 * Time.deltaTime);
 
         }
     }
@@ -118,9 +125,17 @@ public class hamMovement : MonoBehaviour {
             if (fb_control < 0)
             {
                 fb_control += .1f;
+                if (fb_control > 0)
+                {
+                    fb_control = 0f;
+                }
             }else if(fb_control > 0)
             {
                 fb_control -= .1f;
+                if (fb_control < 0)
+                {
+                    fb_control = 0;
+                }
             }
         }
     }
